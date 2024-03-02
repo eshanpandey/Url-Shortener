@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import random
 import string
+import json
 
 app = Flask(__name__)
 shortened_urls = {}
@@ -18,6 +19,8 @@ def index():
         long_url = request.form['long_url']
         short_url = generate_shortened_url()
         shortened_urls[short_url] = long_url
+        with open('shortened_urls.json', 'w') as file:
+            json.dump(shortened_urls, file)  # Fix this line
         return render_template('success.html', short_url=f"{request.host_url}{short_url}")
     return render_template('index.html')
 
