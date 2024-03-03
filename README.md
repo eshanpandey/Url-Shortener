@@ -1,20 +1,30 @@
-# Url-Shortener
-This is a URL sshortener app built using Flask and Python.
+# URL Shortener
 
-The Url shortener allows the user to shorten a url of their choice using keywords of their choice or they can have it generated for them in a random fashion.
-The user can then use the shortened url to redirect to the original url.
+This is a URL shortener app built using Flask and Python.
 
-The next step for this shortener would be to create a login page and implement some authentication and authorization.
-The user can then view all the urls they have shortened and also delete them if they want to.
+## Features
 
-I also need a Database to store the shortened urls and the original urls.
-will do that in the next version of the app.
+- Allows users to shorten a URL of their choice using keywords or generate a random shortened URL.
+- Users can use the shortened URL to redirect to the original URL.
+- Future plans include implementing user authentication and authorization, allowing users to view and manage their shortened URLs.
 
+## Live Demo
 
-The website is live at : https://url-shortener-n6zk.onrender.com/
+Check out the live demo of the URL shortener app [here](https://url-shortener-n6zk.onrender.com/).
 
-# Screenshots 
-![image](https://github.com/eshanpandey/Url-Shortener/assets/56771531/196e34bc-2a41-4a90-9675-284956995bf7)
-![image](https://github.com/eshanpandey/Url-Shortener/assets/56771531/bc6f3a95-e679-4a6a-b146-c828d27df6c2)
+## Screenshots
 
+![Homepage](https://github.com/eshanpandey/Url-Shortener/assets/56771531/196e34bc-2a41-4a90-9675-284956995bf7)
+![Shortened URL](https://github.com/eshanpandey/Url-Shortener/assets/56771531/bc6f3a95-e679-4a6a-b146-c828d27df6c2)
 
+## Next Steps
+
+- Implement a login page for users to authenticate and manage their shortened URLs.
+- Set up a database to store the shortened URLs and original URLs for better data management and persistence.
+
+## How to Run Locally
+
+1. Clone this repository.
+2. Install the required dependencies listed in `requirements.txt`.
+3. Run the Flask app using `python app.py`.
+4. Access the app in your browser.
