@@ -15,8 +15,28 @@
                 <label for="long_url" class="form-label">Enter URL:</label>
                 <input type="text" class="form-control" id="long_url" name="long_url">
             </div>
+            <div class="mb-3">
+                <label for="custom_short_url" class="form-label">Custom Short URL (Optional):</label>
+                <input type="text" class="form-control" id="custom_short_url" name="custom_short_url">
+            </div>
             <button type="submit" class="btn btn-primary">Shorten</button>
         </form>
+        <div id="error" class="alert alert-danger mt-3" role="alert" style="display:none;"></div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const customShortUrlInput = document.getElementById('custom_short_url');
+            const errorDiv = document.getElementById('error');
+            customShortUrlInput.addEventListener('input', function() {
+                const customShortUrl = customShortUrlInput.value;
+                if (customShortUrl.trim() !== '' && customShortUrl in existingShortenedUrls) {
+                    errorDiv.textContent = 'Custom short URL already exists. Please choose a different one.';
+                    errorDiv.style.display = 'block';
+                } else {
+                    errorDiv.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
