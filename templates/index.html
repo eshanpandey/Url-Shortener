@@ -7,36 +7,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Welcome to my Url Shortener Service</h1>
-        <p>Enter a URL to shorten it.</p>
+    <div class="container mt-5" style="max-width: 640px;">
+        <h1 class="mb-4">URL Shortener</h1>
+        <p>Enter a URL to shorten it. Optionally choose your own alias.</p>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
         <form method="POST">
             <div class="mb-3">
-                <label for="long_url" class="form-label">Enter URL:</label>
-                <input type="text" class="form-control" id="long_url" name="long_url">
+                <label for="long_url" class="form-label">URL</label>
+                <input type="text" class="form-control" id="long_url" name="long_url" placeholder="https://example.com/a/very/long/link" required>
             </div>
             <div class="mb-3">
-                <label for="custom_short_url" class="form-label">Custom Short URL (Optional):</label>
-                <input type="text" class="form-control" id="custom_short_url" name="custom_short_url">
+                <label for="custom_short_url" class="form-label">Custom alias (optional)</label>
+                <input type="text" class="form-control" id="custom_short_url" name="custom_short_url" pattern="[A-Za-z0-9_-]{3,32}" placeholder="my-link">
             </div>
             <button type="submit" class="btn btn-primary">Shorten</button>
         </form>
-        <div id="error" class="alert alert-danger mt-3" role="alert" style="display:none;"></div>
+        <p class="text-muted mt-4 small">API: <code>POST /api/shorten</code> with <code>{"url": "...", "alias": "optional"}</code> &middot; <code>GET /api/stats/&lt;code&gt;</code></p>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const customShortUrlInput = document.getElementById('custom_short_url');
-            const errorDiv = document.getElementById('error');
-            customShortUrlInput.addEventListener('input', function() {
-                const customShortUrl = customShortUrlInput.value;
-                if (customShortUrl.trim() !== '' && customShortUrl in existingShortenedUrls) {
-                    errorDiv.textContent = 'Custom short URL already exists. Please choose a different one.';
-                    errorDiv.style.display = 'block';
-                } else {
-                    errorDiv.style.display = 'none';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
